@@ -1,0 +1,78 @@
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js">
+</script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<link rel='stylesheet' href='style.css'>
+
+<script type="text/javascript">
+//2.3
+window.moveit = function(elementID) {
+varcurrentElement = document.getElementById(elementID);
+currentElement.setAttribute('cx', parseInt(currentElement.getAttribute('cx'), 10) + 10 + 'px');
+};
+</script>
+
+<script type="text/javascript">
+//2.4
+window.moved = function(elementID) {
+varcurrentElement = document.getElementById(elementID);
+currentElement.setAttribute('cy', parseInt(currentElement.getAttribute('cy'), 10) + 10 + 'px');
+};
+</script>
+</head>
+<body>
+<h1 id="demo" onmouseover="mouseOver()" onmouseout="mouseOut()">Mouse over me</h1>
+
+<script>
+//2.5
+function mouseOver() {
+document.getElementById("demo").style.color = "white";
+}
+
+function mouseOut() {
+document.getElementById("demo").style.color = "black";
+}
+</script>
+
+
+<h2>CSE 578 Data Visualization</h2>
+<script>
+d3.select('body').style("background-color","#F5B7B1")
+//1.1 and 1.2
+d3.select('h2').style("color",function(){
+return"hsl("+Math.random()+180+",100%,50%)";
+}
+);
+
+//1.3
+d3.select('h2').text("hello");
+
+//1.4
+d3.select("body").selectAll("p")
+.data([1,2,3,4,5,4])
+.enter().append("p")
+.text(function(d){return d; });
+
+//1.5
+d3.selectAll("p").style("color", function(d, i) {
+returni % 2 ? "#1A5276" : "#85C1E9";
+});
+
+//2.2
+d3.select("circle")
+.transition()
+.duration(2000)
+.attr("width", "400")
+//2.1
+</script>
+
+<svg width="500px">
+<circleid="circle"cx="50"cy="50"r="50"onclick="moveit(this.id)"/>
+</svg>
+
+<svg width="700px">
+<circleid="cir"cx="70"cy="50"r="20"onclick="moved(this.id)"/>
+</svg>
+</body>
+</html>
